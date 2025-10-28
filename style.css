@@ -1,18 +1,14 @@
-/* Variables y Resets */
 :root {
-    /* Colores - TEMAS OSCURO Y VIOLETA */
-    --color-dark: #FFFFFF;      /* Texto principal: Blanco (para contrastar con fondo oscuro) */
-    --color-light: #252A4A;     /* Fondo de tarjetas: Azul oscuro sutil */
-    --color-background: #191B33; /* Fondo principal: Azul noche profundo */
-    --color-accent: #8338EC;    /* Violeta vibrante (Accento principal, antes secundario) */
-    --color-secondary: #3A86FF; /* Azul medio (Secundario) */
+    --color-dark: #FFFFFF;     
+    --color-light: #252A4A;     
+    --color-background: #191B33;
+    --color-accent: #8338EC;   /* Violeta principal */
+    --color-secondary: #3A86FF; /* Azul medio */
     --color-text-light: #FFFFFF;
     
-    /* Tipografía - Display más clean (Fuentes del sistema) */
     --font-display: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     
-    /* Gradiente (Ajustado para tonos oscuros/fríos) */
     --gradient-hero: linear-gradient(145deg, #0A0C1A 0%, #191B33 40%, #8338EC 80%, #3A86FF 100%);
 }
 
@@ -22,7 +18,6 @@
     padding: 0;
 }
 
-/* Base Global */
 body {
     font-family: var(--font-body);
     color: var(--color-dark); /* Texto blanco */
@@ -31,7 +26,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Enlaces base y Hover Moderno */
 a {
     color: var(--color-accent);
     text-decoration: none;
@@ -40,7 +34,7 @@ a {
 }
 
 a:hover {
-    color: var(--color-secondary); /* Cambio de color al hacer hover */
+    color: var(--color-secondary);
 }
 
 a:after {
@@ -62,9 +56,7 @@ a:hover:after {
     background: var(--color-accent);
 }
 
-/* --- CLASES DE VISTA PARA EFECTO PANTALLA DISTINTA --- */
 .hero-section {
-    /* El Hero mantiene el gradiente llamativo, pero en tonos oscuros */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -74,12 +66,9 @@ a:hover:after {
     background: var(--gradient-hero);
     color: var(--color-text-light);
     padding: 0 5%;
-    transition: opacity 0.4s ease-out, visibility 0.4s;
-    z-index: 2;
 }
 
 .content-view {
-    /* La "pantalla" de contenido */
     position: fixed; 
     top: 0;
     left: 0;
@@ -92,7 +81,6 @@ a:hover:after {
     z-index: 1; 
 }
 
-/* Clases de Visibilidad */
 .hidden-view {
     opacity: 0;
     visibility: hidden;
@@ -105,7 +93,7 @@ a:hover:after {
     pointer-events: auto;
 }
 
-/* --- 📌 HEADER / NAVEGACIÓN FIJA --- */
+/* HEADER / NAVEGACIÓN FIJA --- */
 #header-nav {
     position: fixed;
     top: 0;
@@ -139,7 +127,7 @@ a:hover:after {
     width: 0 !important; 
 }
 
-/* --- 1. SECCIÓN HERO (Gradiente) --- */
+/* SECCIÓN HERO */
 .hero-section h1 {
     font-family: var(--font-display);
     font-size: 5em;
@@ -153,29 +141,62 @@ a:hover:after {
     font-weight: 300;
     opacity: 0.9;
     max-width: 800px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px auto;
 }
 
-/* Botones CTA */
+/* Botones */
+.call-to-action {
+    display: flex; /* Alinea los botones uno al lado del otro */
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 20px;
+}
+
 .button {
-    /* ... (Mantenemos el estilo de píldora) ... */
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    text-decoration: none; /* Asegura que no tenga el underline de 'a' */
+    border: 2px solid transparent;
+}
+
+.button:after {
+    display: none !important; 
+}
+
+.button:hover {
+    transform: translateY(-5px); 
+    color: var(--color-text-light); 
+}
+
+.button-accent {
+    background-color: var(--color-accent); 
     color: var(--color-text-light);
+    border-color: var(--color-accent);
+    box-shadow: 0 8px 20px rgba(131, 56, 236, 0.5);
 }
 
-.button.primary {
-    background-color: var(--color-accent); /* Violeta */
-    box-shadow: 0 5px 15px rgba(131, 56, 236, 0.4);
+.button-accent:hover {
+    background-color: #9C57FF; 
+    box-shadow: 0 10px 25px rgba(131, 56, 236, 0.8);
 }
 
-.button.secondary {
-    border: 2px solid var(--color-text-light);
+.button-secondary {
+    background-color: transparent;
+    color: var(--color-text-light);
+    border-color: var(--color-text-light);
 }
 
-.button.secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+.button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15); 
+    border-color: var(--color-text-light);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* --- 2. SECCIONES DE CONTENIDO GENERAL --- */
+/* CONTENIDO GENERAL*/
 .content-section-inner {
     max-width: 1300px;
     margin: 0 auto;
@@ -192,7 +213,7 @@ a:hover:after {
     color: var(--color-text-light); /* Blanco */
 }
 
-/* --- 2.1 SECCIÓN PROYECTOS --- */
+/* PROYECTOS*/
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -275,7 +296,7 @@ a:hover:after {
     font-size: 0.9em;
 }
 
-/* --- 2.2 SECCIÓN SOBRE MÍ --- */
+/* SOBRE MÍ */
 .about-me-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -356,7 +377,7 @@ a:hover:after {
     letter-spacing: 0.5px;
 }
 
-/* --- 2.3 SECCIÓN CONTACTO --- */
+/* CONTACTO*/
 .contact-form {
     text-align: center;
 }
@@ -412,21 +433,7 @@ a:hover:after {
     background-color: var(--color-secondary); /* Azul */
 }
 
-/* --- FOOTER --- */
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 0.8em;
-    color: #666;
-    background-color: var(--color-background);
-    border-top: 1px solid #31375B;
-    z-index: 10; 
-}
-
-/* --- ANIMACIONES (Fade-In al hacer scroll dentro de la vista) --- */
+/* ANIMACIONES */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
