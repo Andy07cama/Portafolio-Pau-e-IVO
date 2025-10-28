@@ -1,0 +1,439 @@
+/* Variables y Resets */
+:root {
+    /* Colores - TEMAS OSCURO Y VIOLETA */
+    --color-dark: #FFFFFF;      /* Texto principal: Blanco (para contrastar con fondo oscuro) */
+    --color-light: #252A4A;     /* Fondo de tarjetas: Azul oscuro sutil */
+    --color-background: #191B33; /* Fondo principal: Azul noche profundo */
+    --color-accent: #8338EC;    /* Violeta vibrante (Accento principal, antes secundario) */
+    --color-secondary: #3A86FF; /* Azul medio (Secundario) */
+    --color-text-light: #FFFFFF;
+    
+    /* Tipografía - Display más clean (Fuentes del sistema) */
+    --font-display: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    
+    /* Gradiente (Ajustado para tonos oscuros/fríos) */
+    --gradient-hero: linear-gradient(145deg, #0A0C1A 0%, #191B33 40%, #8338EC 80%, #3A86FF 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base Global */
+body {
+    font-family: var(--font-body);
+    color: var(--color-dark); /* Texto blanco */
+    background-color: var(--color-background); /* Fondo azul oscuro */
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Enlaces base y Hover Moderno */
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+}
+
+a:hover {
+    color: var(--color-secondary); /* Cambio de color al hacer hover */
+}
+
+a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: var(--color-accent);
+    transition: width 0.4s ease;
+    -webkit-transition: width 0.4s ease;
+}
+
+a:hover:after {
+    width: 100%;
+    left: 0;
+    background: var(--color-accent);
+}
+
+/* --- CLASES DE VISTA PARA EFECTO PANTALLA DISTINTA --- */
+.hero-section {
+    /* El Hero mantiene el gradiente llamativo, pero en tonos oscuros */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--gradient-hero);
+    color: var(--color-text-light);
+    padding: 0 5%;
+    transition: opacity 0.4s ease-out, visibility 0.4s;
+    z-index: 2;
+}
+
+.content-view {
+    /* La "pantalla" de contenido */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; 
+    background-color: var(--color-background); /* Fondo oscuro general */
+    padding-top: 80px; 
+    transition: opacity 0.4s ease-out, visibility 0.4s;
+    z-index: 1; 
+}
+
+/* Clases de Visibilidad */
+.hidden-view {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.current-view {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* --- 📌 HEADER / NAVEGACIÓN FIJA --- */
+#header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(25, 27, 51, 0.95); /* Fondo semitransparente oscuro */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5em;
+    color: var(--color-dark); /* Blanco */
+}
+
+#header-nav nav a {
+    margin-left: 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: var(--color-dark); /* Blanco */
+}
+
+#header-nav nav a:after {
+    width: 0 !important; 
+}
+
+/* --- 1. SECCIÓN HERO (Gradiente) --- */
+.hero-section h1 {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 800;
+    letter-spacing: -2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section .subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+/* Botones CTA */
+.button {
+    /* ... (Mantenemos el estilo de píldora) ... */
+    color: var(--color-text-light);
+}
+
+.button.primary {
+    background-color: var(--color-accent); /* Violeta */
+    box-shadow: 0 5px 15px rgba(131, 56, 236, 0.4);
+}
+
+.button.secondary {
+    border: 2px solid var(--color-text-light);
+}
+
+.button.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- 2. SECCIONES DE CONTENIDO GENERAL --- */
+.content-section-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 120px 5%;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 3.5em;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: -1px;
+    color: var(--color-text-light); /* Blanco */
+}
+
+/* --- 2.1 SECCIÓN PROYECTOS --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 60px;
+}
+
+.project-card {
+    background-color: var(--color-light); /* Azul oscuro sutil */
+    border: none;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Sombra más oscura */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-12px); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Sombra intensa */
+}
+
+.project-card h3 {
+    font-family: var(--font-display);
+    font-size: 2em;
+    color: var(--color-text-light); /* Blanco */
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.project-card h3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-accent); /* Violeta */
+}
+
+.project-card .tag {
+    background-color: var(--color-secondary); /* Azul medio */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.project-link:hover {
+    color: var(--color-secondary);
+}
+
+.tech-stack {
+    font-size: 0.95em;
+    color: #ADADAD; /* Gris claro para texto secundario */
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.project-description {
+    color: #ADADAD; /* Gris claro */
+}
+
+.card-image {
+    height: 180px; 
+    background-color: #31375B; /* Un azul más oscuro */
+    border-radius: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* --- 2.2 SECCIÓN SOBRE MÍ --- */
+.about-me-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr;
+    gap: 60px;
+}
+
+.intro-paragraph {
+    font-size: 1.25em;
+    line-height: 1.7;
+    font-weight: 400;
+    color: var(--color-text-light); /* Blanco */
+}
+
+.about-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.7em;
+    color: var(--color-text-light); /* Blanco */
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-light); /* Línea de división suave */
+    padding-bottom: 5px;
+}
+
+.achievements-list {
+    list-style: none;
+    padding-left: 0;
+    color: #ADADAD;
+}
+
+.achievements-list li {
+    margin-bottom: 10px;
+    padding-left: 1.5em;
+    position: relative;
+    font-size: 1.05em;
+}
+
+.achievements-list li::before {
+    content: "•";
+    color: var(--color-accent); /* Violeta */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.skills-card {
+    background-color: var(--color-light); /* Azul oscuro sutil */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+}
+
+.skills-card h3 {
+    border-bottom: 2px solid #31375B;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background-color: #31375B; /* Un azul más oscuro */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+/* --- 2.3 SECCIÓN CONTACTO --- */
+.contact-form {
+    text-align: center;
+}
+
+.contact-form p {
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ADADAD;
+}
+
+.contact-form form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 15px;
+    text-align: left;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #31375B; /* Borde oscuro */
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    font-family: var(--font-body);
+    font-size: 1em;
+    background-color: #1A1D36; /* Fondo de campo ligeramente más claro que el fondo principal */
+    color: var(--color-text-light);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form .submit-button {
+    width: 100%;
+    margin-top: 10px;
+    background-color: var(--color-accent); /* Violeta */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.contact-form .submit-button:hover {
+    background-color: var(--color-secondary); /* Azul */
+}
+
+/* --- FOOTER --- */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.8em;
+    color: #666;
+    background-color: var(--color-background);
+    border-top: 1px solid #31375B;
+    z-index: 10; 
+}
+
+/* --- ANIMACIONES (Fade-In al hacer scroll dentro de la vista) --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
