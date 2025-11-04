@@ -4,8 +4,8 @@
     --color-dark: #FFFFFF;      /* Texto principal: Blanco */
     --color-light: #252A4A;     /* Fondo de tarjetas: Azul oscuro sutil */
     --color-background: #191B33; /* Fondo principal: Azul noche profundo */
-    --color-accent: #8338EC;    /* VIOLETA (Mantenido solo para botones, se usa menos) */
-    --color-secondary: #3A86FF; /* AZUL (Usado para subrayado activo y hover) */
+    --color-accent: #8338EC;    /* VIOLETA (Botones) */
+    --color-secondary: #3A86FF; /* AZUL (Subrayado activo y hover) */
     --color-text-light: #FFFFFF;
     
     /* Tipografía */
@@ -25,8 +25,8 @@
 /* Base Global */
 body {
     font-family: var(--font-body);
-    color: var(--color-dark); /* Texto blanco */
-    background-color: var(--color-background); /* Fondo azul oscuro */
+    color: var(--color-dark); 
+    background-color: var(--color-background); 
     line-height: 1.6;
     scroll-behavior: smooth;
     min-height: 100vh; 
@@ -64,9 +64,11 @@ a:hover:after {
     background: var(--color-accent);
 }
 
-/* --- CAMBIO AQUÍ: ENLACE ACTIVO DE LA NAVEGACIÓN --- */
+/* --- CAMBIOS EN LA NAVEGACIÓN SUPERIOR --- */
+
+/* Estilo para el enlace activo */
 #header-nav nav .active-nav {
-    color: var(--color-dark); /* Texto BLANCO (uniforme) */
+    color: var(--color-dark); /* Texto BLANCO */
     font-weight: 700;
 }
 
@@ -283,17 +285,31 @@ a:hover:after {
     content: none !important; 
 }
 
+/* --- ESTILO BASE para el bloque de imagen de la tarjeta --- */
 .card-image {
     height: 120px; 
-    background-color: #31375B; 
+    background-color: #31375B; /* Color de fondo si la imagen no carga */
     border-radius: 5px;
     margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #777;
-    font-size: 0.9em;
+    /* Configuración para imágenes de fondo */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
 }
+
+/* 📌 Clases para cargar imágenes específicas (Ajusta la ruta si es necesario) */
+.my-gym-bro-img {
+    background-image: url('MyGymBro.png'); 
+}
+
+.tagy-games-img {
+    background-image: url('TagyGames.png');
+}
+
+.cv-analytics-img {
+    background-image: url('CVAnalytics.png');
+}
+
 
 /* --- 2.2 SECCIÓN SOBRE MÍ --- */
 .about-me-layout {
