@@ -82,8 +82,10 @@ a:hover:after {
 /* --- SECCIONES DE PANTALLA --- */
 
 .content-main {
-    padding-top: 80px; 
-    padding-bottom: 100px; 
+    /* CORRECCIÓN 1: Reducimos el espacio superior (padding-top) */
+    padding-top: 50px; 
+    /* Quitamos el padding-bottom grande, ya que no usas el footer fijo */
+    padding-bottom: 50px; 
     min-height: 100vh;
 }
 
@@ -218,14 +220,13 @@ a:hover:after {
     padding: 60px 5%;
 }
 
-/* TÍTULO DE SECCIÓN (Ej: Proyectos Destacados) */
 .section-title {
     font-family: var(--font-display);
     font-size: 3.5em;
     font-weight: 800;
     text-align: left; 
     margin-bottom: 40px; 
-    margin-top: 40px;
+    margin-top: 10px; 
     letter-spacing: -1px;
     color: var(--color-text-light);
 }
@@ -285,21 +286,20 @@ a:hover:after {
     content: none !important; 
 }
 
-/* --- ESTILO BASE para el bloque de imagen de la tarjeta --- */
 .card-image {
     height: 120px; 
-    background-color: #31375B; /* Color de fondo si la imagen no carga */
+    background-color: white; 
     border-radius: 5px;
     margin-bottom: 10px;
-    /* Configuración para imágenes de fondo */
-    background-size: cover; 
+    background-size: contain; 
     background-position: center; 
     background-repeat: no-repeat;
+    padding: 10px; 
 }
 
-/* 📌 Clases para cargar imágenes específicas (Ajusta la ruta si es necesario) */
 .my-gym-bro-img {
     background-image: url('MyGymBro.png'); 
+    background-color: #D62828; /* Fondo ROJO */
 }
 
 .tagy-games-img {
@@ -320,7 +320,8 @@ a:hover:after {
 
 .about-content {
     display: grid;
-    grid-template-columns: 3fr 1.5fr;
+    /* 📌 AJUSTE PARA MEJOR COMPOSICIÓN: Maximizamos el contenido principal en pantallas grandes */
+    grid-template-columns: minmax(400px, 3fr) minmax(250px, 1.5fr);
     gap: 60px;
 }
 .intro-paragraph {
@@ -439,20 +440,6 @@ a:hover:after {
     background-color: var(--color-secondary);
 }
 
-/* --- FOOTER --- */
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 0.8em;
-    color: #666;
-    background-color: var(--color-background);
-    border-top: 1px solid #31375B;
-    z-index: 10; 
-}
-
 /* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
     .hero-section h1 {
@@ -487,6 +474,7 @@ footer {
     }
 
     .about-content {
+        /* Desactiva el grid de dos columnas en móvil */
         grid-template-columns: 1fr;
     }
     
