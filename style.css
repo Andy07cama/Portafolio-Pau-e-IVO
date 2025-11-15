@@ -213,7 +213,7 @@ a:hover:after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* --- 2. SECCIONES DE CONTENIDO GENERAL (Proyectos, Sobre Mí, Contacto) --- */
+/*  GENERAL */
 .content-section {
     max-width: 1300px;
     margin: 0 auto;
@@ -224,14 +224,14 @@ a:hover:after {
     font-family: var(--font-display);
     font-size: 3.5em;
     font-weight: 800;
-    text-align: left; 
+    text-align: center; 
     margin-bottom: 40px; 
     margin-top: 10px; 
     letter-spacing: -1px;
     color: var(--color-text-light);
 }
 
-/* --- 2.1 SECCIÓN PROYECTOS --- */
+/*  PROYECTOS */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -299,7 +299,7 @@ a:hover:after {
 
 .my-gym-bro-img {
     background-image: url('MyGymBro.png'); 
-    background-color: #D62828; /* Fondo ROJO */
+    background-color: #E83D3D;
 }
 
 .tagy-games-img {
@@ -311,7 +311,7 @@ a:hover:after {
 }
 
 
-/* --- 2.2 SECCIÓN SOBRE MÍ --- */
+/* SOBRE MÍ  */
 .about-me-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -320,7 +320,6 @@ a:hover:after {
 
 .about-content {
     display: grid;
-    /* 📌 AJUSTE PARA MEJOR COMPOSICIÓN: Maximizamos el contenido principal en pantallas grandes */
     grid-template-columns: minmax(400px, 3fr) minmax(250px, 1.5fr);
     gap: 60px;
 }
@@ -384,7 +383,7 @@ a:hover:after {
     letter-spacing: 0.5px;
 }
 
-/* --- 2.3 SECCIÓN CONTACTO --- */
+/*  CONTACTO */
 .contact-form {
     text-align: center;
 }
@@ -438,47 +437,4 @@ a:hover:after {
 
 .contact-form .submit-button:hover {
     background-color: var(--color-secondary);
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 3em;
-    }
-
-    .hero-section .subtitle {
-        font-size: 1.2em;
-    }
-
-    .call-to-action {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .button {
-        width: 80vw;
-        margin: 0 auto;
-    }
-    
-    #header-nav {
-        padding: 15px 3%;
-    }
-
-    #header-nav nav a {
-        margin-left: 15px;
-    }
-
-    .section-title {
-        font-size: 2.5em;
-    }
-
-    .about-content {
-        /* Desactiva el grid de dos columnas en móvil */
-        grid-template-columns: 1fr;
-    }
-    
-    .content-section {
-        padding: 40px 5%;
-    }
 }
