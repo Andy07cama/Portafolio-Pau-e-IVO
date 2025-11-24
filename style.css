@@ -1,18 +1,14 @@
-/* Variables y Resets (Esquema de Color Oscuro / Violeta) */
 :root {
-    /* Colores - TEMAS OSCURO Y VIOLETA */
-    --color-dark: #FFFFFF;      /* Texto principal: Blanco */
-    --color-light: #252A4A;     /* Fondo de tarjetas: Azul oscuro sutil */
-    --color-background: #191B33; /* Fondo principal: Azul noche profundo */
-    --color-accent: #8338EC;    /* VIOLETA (Botones) */
-    --color-secondary: #3A86FF; /* AZUL (Subrayado activo y hover) */
+    --color-dark: #FFFFFF;
+    --color-light: #252A4A;
+    --color-background: #191B33;
+    --color-accent: #8338EC;
+    --color-secondary: #3A86FF;
     --color-text-light: #FFFFFF;
     
-    /* Tipografía */
     --font-display: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     
-    /* Gradiente (Ajustado para tonos oscuros/fríos) */
     --gradient-hero: linear-gradient(145deg, #0A0C1A 0%, #191B33 40%, #8338EC 80%, #3A86FF 100%);
 }
 
@@ -22,7 +18,6 @@
     padding: 0;
 }
 
-/* Base Global */
 body {
     font-family: var(--font-body);
     color: var(--color-dark); 
@@ -33,7 +28,6 @@ body {
     position: relative;
 }
 
-/* Enlaces base y Hover Moderno (Mantenemos el color de acento violeta para links de contenido) */
 a {
     color: var(--color-accent);
     text-decoration: none;
@@ -64,38 +58,32 @@ a:hover:after {
     background: var(--color-accent);
 }
 
-/* --- CAMBIOS EN LA NAVEGACIÓN SUPERIOR --- */
-
-/* Estilo para el enlace activo */
 #header-nav nav .active-nav {
-    color: var(--color-dark); /* Texto BLANCO */
+    color: var(--color-dark);
     font-weight: 700;
 }
 
 #header-nav nav .active-nav:after {
     width: 100%;
     left: 0;
-    background: var(--color-secondary); /* Subrayado AZUL */
+    background: var(--color-secondary);
 }
-
-
-/* --- SECCIONES DE PANTALLA --- */
 
 .content-main {
-    /* CORRECCIÓN 1: Reducimos el espacio superior (padding-top) */
     padding-top: 50px; 
-    /* Quitamos el padding-bottom grande, ya que no usas el footer fijo */
     padding-bottom: 50px; 
     min-height: 100vh;
+    animation-name: slideDownIn;
+    animation-duration: 0.6s; 
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    opacity: 0;
 }
 
-/* Hero en Index (ocupa toda la pantalla) */
 .hero-full-screen {
     height: 100vh;
 }
 
-
-/* --- 📌 HEADER / NAVEGACIÓN FIJA --- */
 #header-nav {
     position: fixed;
     top: 0;
@@ -110,7 +98,6 @@ a:hover:after {
     z-index: 100;
 }
 
-/* LOGO: En blanco */
 .logo {
     font-family: var(--font-display);
     font-weight: 900;
@@ -123,14 +110,13 @@ a:hover:after {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.9em;
-    color: var(--color-dark); /* Texto BLANCO para todos los enlaces inactivos */
+    color: var(--color-dark);
 }
 
 #header-nav nav a:after {
     width: 0 !important;
 }
 
-/* --- SECCIÓN HERO (Gradiente) --- */
 .hero-section {
     display: flex;
     flex-direction: column;
@@ -155,11 +141,9 @@ a:hover:after {
     font-weight: 300;
     opacity: 0.9;
     max-width: 800px;
-    /* Centrado del bloque de texto */
     margin: 0 auto 40px auto; 
 }
 
-/* --- ESTILOS DE BOTONES (CALL TO ACTION - Index) --- */
 .call-to-action {
     display: flex; 
     gap: 20px; 
@@ -187,7 +171,6 @@ a:hover:after {
     color: var(--color-text-light); 
 }
 
-/* Botón "Ver Proyectos" (ACENTO VIOLETA, SÓLIDO) */
 .button-accent {
     background-color: var(--color-accent); 
     color: var(--color-text-light);
@@ -200,7 +183,6 @@ a:hover:after {
     box-shadow: 0 10px 25px rgba(131, 56, 236, 0.8);
 }
 
-/* Botón "Conocer Más" (SECUNDARIO/CONTORNO) */
 .button-secondary {
     background-color: transparent;
     color: var(--color-text-light);
@@ -213,7 +195,6 @@ a:hover:after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/*  GENERAL */
 .content-section {
     max-width: 1300px;
     margin: 0 auto;
@@ -224,14 +205,17 @@ a:hover:after {
     font-family: var(--font-display);
     font-size: 3.5em;
     font-weight: 800;
-    text-align: center; 
+    text-align: left; 
     margin-bottom: 40px; 
     margin-top: 10px; 
     letter-spacing: -1px;
     color: var(--color-text-light);
 }
 
-/*  PROYECTOS */
+.centered-title {
+    text-align: center;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -310,8 +294,6 @@ a:hover:after {
     background-image: url('CVAnalytics.png');
 }
 
-
-/* SOBRE MÍ  */
 .about-me-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -383,7 +365,6 @@ a:hover:after {
     letter-spacing: 0.5px;
 }
 
-/*  CONTACTO */
 .contact-form {
     text-align: center;
 }
@@ -419,7 +400,7 @@ a:hover:after {
 }
 
 .contact-form textarea {
-    resize: vertical;
+    resize: none; 
 }
 
 .contact-form .submit-button {
@@ -432,9 +413,22 @@ a:hover:after {
     border-radius: 50px;
     cursor: pointer;
     font-weight: 700;
-    transition: background-color 0.3s;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 .contact-form .submit-button:hover {
     background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.5); 
+}
+
+@keyframes slideDownIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
